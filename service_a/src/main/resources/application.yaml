@@ -35,7 +35,6 @@ service-b:
 
 app:
   dispatcher:
-    stuck-recovery-ms: 60000
     delay-ms: 5000
 server:
   port: 8081
