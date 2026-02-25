@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: dev
+
+  application:
+    name: service_b
+
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+
+service-c:
+  uri: ${SERVICE_C_URL}
+
+
+app:
+  dispatcher:
+    delay-ms: 5000
