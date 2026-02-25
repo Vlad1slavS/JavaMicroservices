@@ -30,10 +30,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb:4.0.3")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign:5.0.0")
     implementation("commons-fileupload:commons-fileupload:1.6.0")
-
-    implementation("net.javacrumbs.shedlock:shedlock-spring:7.6.0")
-    implementation("net.javacrumbs.shedlock:shedlock-provider-mongo:7.6.0")
-
+    
     annotationProcessor("org.projectlombok:lombok:1.18.42")
 }
 
