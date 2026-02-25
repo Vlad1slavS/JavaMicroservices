@@ -1,0 +1,41 @@
+spring:
+  profiles:
+    active: dev
+
+  application:
+    name: service_a
+
+  cloud:
+    openfeign:
+      client:
+        config:
+          service-b:
+            connect-timeout: 3000
+            read-timeout: 5000
+
+  kafka:
+    topic:
+      in: event-input-topic
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+    consumer:
+      auto-offset-reset: earliest
+      group-id: service-a-v2
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  mongodb:
+    uri: ${MONGODB_URI}
+    representation:
+      uuid: standard
+
+
+service-b:
+  uri: ${SERVICE_B_URL}
+
+
+app:
+  dispatcher:
+    stuck-recovery-ms: 60000
+    delay-ms: 5000
+server:
+  port: 8081
