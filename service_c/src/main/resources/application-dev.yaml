@@ -1,0 +1,29 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: service_c
+  kafka:
+    topic:
+      out: event-output-topic
+    bootstrap-servers: localhost:9094
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      enableIdempotence: true
+      acks: all
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/service_c_db
+    password: password
+    username: user
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+app:
+  dispatcher:
+    delay-ms: 5000
