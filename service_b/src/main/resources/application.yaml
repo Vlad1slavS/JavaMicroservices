@@ -2,6 +2,10 @@ spring:
   profiles:
     active: dev
 
+  liquibase:
+    change-log: classpath:db/migration/db.changelog-master.yaml
+    enabled: true
+
   application:
     name: service_b
 
