@@ -54,7 +54,7 @@ public class EventService {
     }
 
     private void cacheEvent(EventDto event) {
-        if (event.messageType().equals(MessageType.IMPORTANT)) {
+        if (MessageType.IMPORTANT.equals(event.messageType())) {
             redisTemplate.opsForValue().set(
                     "event:" + event.id(),
                     objectMapper.writeValueAsString(event),
