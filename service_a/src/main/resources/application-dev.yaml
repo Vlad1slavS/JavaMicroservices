@@ -32,8 +32,5 @@ spring:
 service-b:
   uri: http://localhost:8082/
 
-app:
-  dispatcher:
-    delay-ms: 5000
 server:
   port: 8081

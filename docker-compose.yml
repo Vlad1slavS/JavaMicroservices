@@ -85,6 +85,11 @@ services:
 
       # URLs до других сервисов
       SERVICE_C_URL: http://service-c:8080
+
+      # PostgreSQL
+      DATASOURCE_URL: jdbc:postgresql://postgres:5432/service_c_db
+      DATASOURCE_USERNAME: user
+      DATASOURCE_PASSWORD: password
     ports:
       - "8082:8080"
 
@@ -98,6 +103,9 @@ services:
       DATASOURCE_URL: jdbc:postgresql://postgres:5432/service_c_db
       DATASOURCE_USERNAME: user
       DATASOURCE_PASSWORD: password
+
+      KAFKA_PRODUCER_IDEMPOTENCE: true
+      KAFKA_PRODUCER_ACKS: all
 
       # Kafka
       KAFKA_BOOTSTRAP_SERVERS: kafka:9092

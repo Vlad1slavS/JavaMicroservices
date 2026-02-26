@@ -5,6 +5,20 @@ spring:
   application:
     name: service_b
 
+  datasource:
+    url: ${DATASOURCE_URL}
+    password: ${DATASOURCE_PASSWORD}
+    username: ${DATASOURCE_USERNAME}
+    driver-class-name: org.postgresql.Driver
+
+  cloud:
+    openfeign:
+      client:
+        config:
+          service-b:
+            connect-timeout: 3000
+            read-timeout: 5000
+
   data:
     redis:
       host: ${REDIS_HOST}
@@ -12,7 +26,6 @@ spring:
 
 service-c:
   uri: ${SERVICE_C_URL}
-
 
 app:
   dispatcher:

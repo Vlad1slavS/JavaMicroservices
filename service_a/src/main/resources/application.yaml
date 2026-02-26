@@ -32,9 +32,5 @@ spring:
 service-b:
   uri: ${SERVICE_B_URL}
 
-
-app:
-  dispatcher:
-    delay-ms: 5000
 server:
   port: 8081
