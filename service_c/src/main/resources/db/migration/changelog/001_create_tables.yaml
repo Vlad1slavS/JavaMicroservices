@@ -1,0 +1,100 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-events
+      author: Степанов Владислав
+      changes:
+        - createTable:
+            tableName: events
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMP(3)
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 002-create-outbox-events
+      author: Степанов Владислав
+      changes:
+        - createTable:
+            tableName: outbox_events
+            columns:
+              - column:
+                  name: event_id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: event_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMP(3)
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 003-create-processed-messages
+      author: Степанов Владислав
+      changes:
+        - createTable:
+            tableName: processed_messages
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+  - changeSet:
+      id: 004-create-shedlock-table
+      author: Степанов Владислав
+      changes:
+        - createTable:
+            tableName: shedlock
+            columns:
+              - column:
+                  name: name
+                  type: VARCHAR(64)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: lock_until
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: locked_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: locked_by
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
