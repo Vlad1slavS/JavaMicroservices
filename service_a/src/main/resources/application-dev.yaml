@@ -11,6 +11,9 @@ spring:
             read-timeout: 5000
 
   kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
     topic:
       in: event-input-topic
     bootstrap-servers: localhost:9094
